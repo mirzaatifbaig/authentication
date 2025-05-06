@@ -2,6 +2,7 @@ import {Home} from "lucide-react";
 import {Link} from "react-router-dom";
 import {Button} from "@/components/ui/button.jsx";
 import useAuthStore from "@/store/useAuthStore.jsx";
+
 const Navbar = () => {
     const {clearAuth, token} = useAuthStore();
     return (
@@ -16,16 +17,16 @@ const Navbar = () => {
             <div className="flex items-center space-x-2 mx-4">
                 <Link to="/login">Login</Link>
 
-                {token && (<Link to="/">
-                    <Button onClick={clearAuth}>
-                        Logout
-                    </Button>
-                </Link>)}
-                {!token && (<Link to="/signup">
-                <Button >
-                    Signup
-                </Button>
-            </Link>)}
+                {token && (
+                    <Link to="/">
+                        <Button onClick={clearAuth}>Logout</Button>
+                    </Link>
+                )}
+                {!token && (
+                    <Link to="/signup">
+                        <Button>Signup</Button>
+                    </Link>
+                )}
             </div>
         </nav>
     );
