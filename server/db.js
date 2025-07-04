@@ -1,6 +1,10 @@
 // db.js
 const Database = require("better-sqlite3");
-const db = new Database("users.db");
+const path = require("path");
+
+// Use /tmp directory for the database in the Vercel environment
+const dbPath = process.env.VERCEL_ENV === "production" ? path.join("/tmp", "users.db") : "users.db";
+const db = new Database(dbPath);
 
 db.prepare(
   `
