@@ -87,7 +87,5 @@ app.get("/dashboard", authenticateToken, (req, res) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+// Export the app for Vercel
+module.exports = app;
